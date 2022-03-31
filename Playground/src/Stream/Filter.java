@@ -24,7 +24,21 @@ public class Filter {
 				
 		System.out.println(result2ListaTech);
 		
-		
+		//2. Streams filter(), findAny() and orElse() ////////////////////////////////////	
+		//Befor Java 8
+		List<Person> myPeoples = Arrays.asList(
+				
+				new Person("Heitor",24),
+				new Person("Ana Caroline",21),
+				new Person("Nadir",48),
+				new Person("Lucas",24),
+				new Person("William",24),
+				new Person("Gabriel S.",22),
+				new Person("Gabriel A.",19)
+				
+				);
+		Person pessoaSelecionada = getPersonByName(myPeoples, "Heitor");
+		System.out.println(pessoaSelecionada);
 	}
 	
 	
@@ -39,4 +53,17 @@ public class Filter {
 		return result;
 		
 		}
+	
+	public static Person getPersonByName(List<Person>persons, String name) {
+		Person result = null;
+		
+		for(Person p: persons) {
+			if(name.equals(p.getName())) {
+				result = p;
+			}
+		}
+		return result;
+	}
+	
+	
 	}
