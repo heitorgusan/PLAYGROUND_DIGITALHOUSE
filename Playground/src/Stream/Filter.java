@@ -65,7 +65,25 @@ public class Filter {
 				.orElse(null);										 //Else if not found return nulll					 
 		System.out.println(pessoaSelecionada3);
 		
+		//Multiple conditions
 		
+		List<Person> pessoas3 = Arrays.asList(
+				
+				new Person("JR",45),
+				new Person("JR",27),
+				new Person("Justin",25),
+				new Person("Jani",23),
+				new Person("Joia",36)
+				
+				
+				);
+				
+		Person pessoaSelecionada4 = pessoas3.stream()
+				.filter((pessoa)->"JR".equals(pessoa.getName()) && 27 == pessoa.getAge())
+				.findAny()
+				.orElse(null);
+		
+		System.out.println(pessoaSelecionada4);
 	}
 	
 	
