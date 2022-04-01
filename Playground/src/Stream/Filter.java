@@ -84,7 +84,42 @@ public class Filter {
 				.orElse(null);
 		
 		System.out.println(pessoaSelecionada4);
-	}
+		
+		//Or like
+		Person pessoaSelecionada5 = pessoas3.stream()
+                .filter(p -> {
+                    if ("JR".equals(p.getName()) && 27 == p.getAge()) {
+                        return true;
+                    }
+                    return false;
+                }).findAny()
+                .orElse(null);
+
+        System.out.println(pessoaSelecionada5);
+        
+        //3. Streams filter() and map()
+        
+        List<Person> persons = Arrays.asList(
+                new Person("mkyong", 30),
+                new Person("jack", 20),
+                new Person("lawrence", 40)
+        );
+
+        String name = persons.stream()
+                .filter(x -> "jack".equals(x.getName()))
+                .map(Person::getName)                        //convert stream to String
+                .findAny()
+                .orElse("");
+
+        System.out.println("name : " + name);
+
+        List<String> collect = persons.stream()
+                .map(Person::getName)
+                .collect(Collectors.toList());
+
+        collect.forEach(System.out::println);
+
+    }
 	
 	
 	//MÉTODOS////////////
