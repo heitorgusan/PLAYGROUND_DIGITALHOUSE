@@ -33,8 +33,9 @@ public class Main {
 		Compras compra4 = new Compras(c4,Stream.of(p2,p5,p8));
 		
 		Produto[] produtos = {p1,p2,p3,p4,p5,p6,p7,p8,p9};
-		Cliente[] clientes = {c1,c2,c3,c4,c5,c6};
-		Compras[] compras = {compra1,compra2,compra3,compra4};
+		//List<Produto>produtos2 = Arrays.asList(p1,p2,p3,p4,p5,p6,p7,p8,p9);
+		List<Cliente> clientes = Arrays.asList(c1,c2,c3,c4,c5,c6);
+		List<Compras> vendas = Arrays.asList(compra1,compra2,compra3,compra4);
 		
 		//Mostrar todos os produtos com preço acima de 1000;
 		
@@ -43,7 +44,19 @@ public class Main {
 			return p.getPreco() > 10;
 		});
 		streamProdutos.forEach(p -> System.out.println(p));
-
+		
+		//Nome dos Clientes
+		clientes.stream()
+			.map( c -> c.getNome())
+			.forEach(c -> System.out.println(c));
+		
+		//Valor total em vendas
+		vendas.stream().forEach(compra -> {
+			compra.getProdutos().forEach(produto->{
+				System.out.print(produto);
+			});
+			System.out.println();
+		});
 	}
 
 }
