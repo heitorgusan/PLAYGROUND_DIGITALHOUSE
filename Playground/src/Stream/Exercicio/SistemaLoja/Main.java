@@ -1,6 +1,7 @@
 package Stream.Exercicio.SistemaLoja;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -31,18 +32,17 @@ public class Main {
 		Compras compra3 = new Compras(c3,Stream.of(p3,p6,p7));
 		Compras compra4 = new Compras(c4,Stream.of(p2,p5,p8));
 		
-		Produto[] produtos = {p1,p2,p3,p4,p5};
+		Produto[] produtos = {p1,p2,p3,p4,p5,p6,p7,p8,p9};
 		Cliente[] clientes = {c1,c2,c3,c4,c5,c6};
 		Compras[] compras = {compra1,compra2,compra3,compra4};
 		
 		//Mostrar todos os produtos com preço acima de 1000;
 		
 		Stream<Produto> streamProdutos =  Stream.of(produtos);
-		streamProdutos.filter(p -> p.getPreco() > 1000);
-		streamProdutos.forEach(s->System.out.println(s));
-		
-		
-		
+		streamProdutos = streamProdutos.filter(p->{
+			return p.getPreco() > 10;
+		});
+		streamProdutos.forEach(p -> System.out.println(p));
 
 	}
 
