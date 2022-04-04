@@ -2,6 +2,8 @@ package Stream.Exercicio.SistemaLoja;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -47,16 +49,18 @@ public class Main {
 		
 		//Nome dos Clientes
 		clientes.stream()
-			.map( c -> c.getNome())
+			.map(c -> c.getNome())
 			.forEach(c -> System.out.println(c));
 		
 		//Valor total em vendas
-		vendas.stream().forEach(compra -> {
-			compra.getProdutos().forEach(produto->{
-				System.out.print(produto);
-			});
-			System.out.println();
-		});
+		
+		for(Compras compra : vendas) {
+			Stream<Produto> produtosVendidos = compra.getProdutos();
+			List<Double> valorTotalVendido = produtosVendidos.map(p->p.getPreco()).collect(Collectors.toList());
+			double valoresArray =  valorTotalVendido.toArray();
+			System.out.println(valoresArray);
+		}
+	
 	}
 
 }
