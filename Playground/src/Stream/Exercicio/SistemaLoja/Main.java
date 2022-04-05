@@ -52,7 +52,7 @@ public class Main {
 			.map(c -> c.getNome())
 			.forEach(c -> System.out.println(c));
 		
-		//Valor total em vendas
+		//Valor total em vendas && 	//Valor total em vendas para determinado cliente
 		
 		vendas.forEach(compra->{
 			List<Produto> produtosVendidos = compra.getProdutos();
@@ -60,8 +60,12 @@ public class Main {
 			for(int i = 0 ; i < produtosVendidos.size();i++) {
 				valorTotalVendido += produtosVendidos.get(i).getPreco();
 			}
+			System.out.println("Cliente: "+compra.getCliente().getNome());
 			System.out.println("Valor total vendido na compra: "+valorTotalVendido);
 		});
+		
+	
+		
 	}
 
 }
