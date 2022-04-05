@@ -1,15 +1,15 @@
 package Stream.Exercicio.SistemaLoja;
 
 import java.util.ArrayList;
-import java.util.stream.Stream;
+import java.util.List;
 
 public class Compras {
 	private Cliente cliente;
-	private Stream<Produto>produtos;
+	private List<Produto>produtos;
 	
 	
 	
-	public Compras(Cliente cliente, Stream<Produto> produtos) {
+	public Compras(Cliente cliente, List<Produto> produtos) {
 		super();
 		this.cliente = cliente;
 		this.produtos = produtos;
@@ -23,11 +23,11 @@ public class Compras {
 		this.cliente = cliente;
 	}
 
-	public Stream<Produto> getProdutos() {
+	public List<Produto> getProdutos() {
 		return produtos;
 	}
 
-	public void setProdutos(Stream<Produto> produtos) {
+	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
 	}
 

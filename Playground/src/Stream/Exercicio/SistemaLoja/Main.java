@@ -29,10 +29,10 @@ public class Main {
 		Cliente c5 = new Cliente("Ana Caroline","119544541");
 		Cliente c6 = new Cliente("Frangalio","11948578454");
 		
-		Compras compra1 = new Compras(c1,Stream.of(p1,p2));
-		Compras compra2 = new Compras(c2,Stream.of(p1,p3,p4));
-		Compras compra3 = new Compras(c3,Stream.of(p3,p6,p7));
-		Compras compra4 = new Compras(c4,Stream.of(p2,p5,p8));
+		Compras compra1 = new Compras(c1,Arrays.asList(p1,p2));
+		Compras compra2 = new Compras(c2,Arrays.asList(p1,p3,p4));
+		Compras compra3 = new Compras(c3,Arrays.asList(p3,p6,p7));
+		Compras compra4 = new Compras(c4,Arrays.asList(p2,p5,p8));
 		
 		Produto[] produtos = {p1,p2,p3,p4,p5,p6,p7,p8,p9};
 		//List<Produto>produtos2 = Arrays.asList(p1,p2,p3,p4,p5,p6,p7,p8,p9);
@@ -54,13 +54,14 @@ public class Main {
 		
 		//Valor total em vendas
 		
-		for(Compras compra : vendas) {
-			Stream<Produto> produtosVendidos = compra.getProdutos();
-			List<Double> valorTotalVendido = produtosVendidos.map(p->p.getPreco()).collect(Collectors.toList());
-			double valoresArray =  valorTotalVendido.toArray();
-			System.out.println(valoresArray);
-		}
-	
+		vendas.forEach(compra->{
+			List<Produto> produtosVendidos = compra.getProdutos();
+			double valorTotalVendido = 0;
+			for(int i = 0 ; i < produtosVendidos.size();i++) {
+				valorTotalVendido += produtosVendidos.get(i).getPreco();
+			}
+			System.out.println("Valor total vendido na compra: "+valorTotalVendido);
+		});
 	}
 
 }
